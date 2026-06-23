@@ -1,0 +1,112 @@
+// Glint Browser — Hardened Privacy Defaults
+// Core privacy & security hardening
+
+// === DNS & Networking ===
+// Enable DNS over HTTPS with Cloudflare (private)
+pref("network.trr.mode", 3);
+pref("network.trr.uri", "https://mozilla.cloudflare-dns.com/dns-query");
+pref("network.trr.bootstrapAddress", "");
+pref("network.trr.default_provider_uri", "https://mozilla.cloudflare-dns.com/dns-query");
+pref("network.trr.allow-rfc1918", false);
+pref("network.trr.useGET", true);
+pref("network.trr.confirmationNS", "not-used");
+
+// Disable IPv6 if not wanted — leave enabled by default
+pref("network.dns.disablePrefetch", true);
+pref("network.dns.disablePrefetchFromHTTPS", true);
+pref("network.predictor.enabled", false);
+pref("network.prefetch-next", false);
+pref("network.http.speculative-parallel-limit", 0);
+
+// === Connection Limits ===
+pref("network.http.max-connections", 900);
+pref("network.http.max-connections-per-server", 10);
+pref("network.http.max-persistent-connections-per-server", 6);
+pref("network.http.max-persistent-connections-per-proxy", 12);
+
+// === TLS & SSL ===
+pref("security.tls.version.enable-deprecated", false);
+pref("security.tls.version.min", 3);
+pref("security.tls.version.max", 4);
+pref("security.ssl.enable_ocsp_stapling", true);
+pref("security.ssl.enable_ocsp_must_staple", true);
+pref("security.ssl.require_safe_negotiation", true);
+pref("security.cert_pinning.enforcement_level", 2);
+
+// === Cookie Controls ===
+pref("network.cookie.lifetimePolicy", 2);    // delete on close
+pref("network.cookie.thirdparty.sessionOnly", true);
+pref("network.cookie.thirdparty.nonsecureSessionOnly", true);
+pref("network.cookie.cookieBehavior", 5);    // reject cross-site + isolate
+pref("network.cookie.cookieBehavior.optInPartitioning", true);
+
+// === Storage & Partitioning ===
+pref("privacy.partition.network_state", true);
+pref("privacy.partition.always_partition_third_party_non_cookie_storage", true);
+pref("privacy.partition.always_partition_third_party_non_cookie_storage.private", true);
+pref("privacy.partition.serviceWorkers", true);
+pref("privacy.partition.bloburls", true);
+pref("privacy.firstparty.isolate", true);
+
+// === Fingerprinting ===
+pref("privacy.resistFingerprinting", true);
+pref("privacy.resistFingerprinting.block_mozAddonManager", true);
+pref("privacy.resistFingerprinting.autoDeclineNoUserInputCanvasPrompts", true);
+pref("privacy.resistFingerprinting.exemptedDomains", "");
+pref("privacy.window.maxInnerWidth", 1920);
+pref("privacy.window.maxInnerHeight", 1080);
+pref("privacy.spoof_english", 2);
+
+// === Tracking Protection ===
+pref("privacy.trackingprotection.enabled", true);
+pref("privacy.trackingprotection.pbmode.enabled", true);
+pref("privacy.trackingprotection.fingerprinting.enabled", true);
+pref("privacy.trackingprotection.cryptomining.enabled", true);
+pref("privacy.trackingprotection.emailtracking.enabled", true);
+pref("privacy.trackingprotection.socialtracking.enabled", true);
+pref("privacy.socialtracking.block_cookies.enabled", true);
+pref("browser.contentblocking.category", "strict");
+
+// === Referrer ===
+pref("network.http.referer.XOriginTrimmingPolicy", 2);
+pref("network.http.referer.spoofSource", true);
+pref("network.http.referer.hideOnionSource", true);
+pref("network.http.referer.defaultPolicy", 0);     // no-referrer
+pref("network.http.referer.defaultPolicy.pbmode", 0);
+
+// === Permissions ===
+pref("permissions.default.image", 1);      // allow images
+pref("permissions.default.script", 1);     // allow scripts
+pref("permissions.default.stylesheet", 1); // allow stylesheets
+pref("permissions.default.object", 2);     // block plugins
+pref("permissions.default.desktop-notification", 2); // block
+pref("permissions.default.geo", 2);        // block
+pref("permissions.default.microphone", 2); // block
+pref("permissions.default.camera", 2);     // block
+pref("permissions.default.xr", 2);         // block VR
+pref("permissions.default.shortcuts", 2);  // block keyboard
+
+// === Popups & Autoplay ===
+pref("dom.disable_open_during_load", true);
+pref("dom.popup_maximum", 3);
+pref("media.autoplay.default", 5);         // block all
+pref("media.autoplay.blocking_policy", 2);
+pref("media.autoplay.ask-permission", true);
+
+// === Downloads ===
+pref("browser.download.useDownloadDir", false);
+pref("browser.download.manager.addToRecentDocs", false);
+pref("browser.download.alwaysOpenPanel", false);
+pref("browser.download.start_downloads_in_tmp_dir", true);
+
+// === Miscellaneous ===
+pref("dom.battery.enabled", false);
+pref("dom.gamepad.enabled", false);
+pref("dom.vr.enabled", false);
+pref("dom.vr.oculus.enabled", false);
+pref("dom.webnotifications.enabled", false);
+pref("dom.push.enabled", false);
+pref("media.webspeech.synth.enabled", false);
+pref("media.video_stats.enabled", false);
+pref("device.sensors.enabled", false);
+pref("webchannel.allowObject.urlWhitelist", "");

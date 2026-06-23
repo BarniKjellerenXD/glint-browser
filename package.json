@@ -1,0 +1,25 @@
+{
+  "name": "glint-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Glint Browser — a privacy-focused, glassmorphic Gecko browser",
+  "scripts": {
+    "init": "npm run download && npm run import",
+    "download": "surfer download",
+    "import": "surfer import",
+    "bootstrap": "surfer bootstrap",
+    "build": "surfer build -j 16",
+    "build:ui": "surfer build --ui -j 16",
+    "start": "cd engine && python3 ./mach run --noprofile",
+    "start:profile": "cd engine && python3 ./mach run -P glint-dev",
+    "package": "surfer package",
+    "reset": "surfer reset",
+    "sync": "surfer update",
+    "status": "surfer status",
+    "export": "surfer export-file",
+    "discard": "surfer discard"
+  },
+  "devDependencies": {
+    "@zen-browser/surfer": "^1.14.6"
+  }
+}

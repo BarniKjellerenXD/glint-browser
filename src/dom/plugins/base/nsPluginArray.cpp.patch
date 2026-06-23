@@ -1,0 +1,19 @@
+// GLINT FARBLING PATCH
+#include "mozilla/Preferences.h"
+#include "mozilla/glint/GlintFarbling.h"
+
+{
+  static bool pluginsEnabled = false;
+  static bool initialized = false;
+  if (!initialized) {
+    Preferences::AddBoolVarCache(&pluginsEnabled, "privacy.farbling.plugins.enabled", false);
+    initialized = true;
+  }
+
+  if (pluginsEnabled) {
+    // Return only 2 generic plugins
+    return 2;  // for GetLength
+    // For GetPluginAt: return a generic plugin with index 0 or 1
+  }
+}
+// END GLINT FARBLING PATCH

@@ -1,0 +1,40 @@
+// Glint Browser — Quick Commands Preferences
+// Enable and configure Ctrl+E quick command palette
+
+// === Quick Commands ===
+pref("glint.quickcommands.enabled", true);
+pref("glint.quickcommands.shortcut", "accel E");
+pref("glint.quickcommands.maxResults", 10);
+pref("glint.quickcommands.showHistory", true);
+pref("glint.quickcommands.showBookmarks", true);
+pref("glint.quickcommands.showTabs", true);
+pref("glint.quickcommands.showActions", true);
+pref("glint.quickcommands.showExtensions", false);
+pref("glint.quickcommands.clearOnClose", true);
+pref("glint.quickcommands.searchInUrlbar", true);
+
+// === Command Palette Keyboard Shortcuts ===
+pref("glint.quickcommands.key.open", "VK_E");
+pref("glint.quickcommands.key.modifier", "VK_CONTROL");
+pref("glint.quickcommands.key.secondary", "");
+
+// === Quick Command Action Groups ===
+pref("glint.quickcommands.actions.navigate", true);
+pref("glint.quickcommands.actions.tabs", true);
+pref("glint.quickcommands.actions.bookmarks", true);
+pref("glint.quickcommands.actions.history", true);
+pref("glint.quickcommands.actions.settings", true);
+pref("glint.quickcommands.actions.private", true);
+pref("glint.quickcommands.actions.quit", true);
+
+// === Appearance ===
+pref("glint.quickcommands.overlay", true);
+pref("glint.quickcommands.transparency", 0.92);
+pref("glint.quickcommands.blurBackground", true);
+pref("glint.quickcommands.animate", true);
+pref("glint.quickcommands.animationDuration", 150);
+
+// === Fonts ===
+pref("glint.quickcommands.fontSize", 14);
+pref("glint.quickcommands.resultFontSize", 13);
+pref("glint.quickcommands.useSystemTheme", true);

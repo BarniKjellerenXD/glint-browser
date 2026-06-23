@@ -1,0 +1,98 @@
+/* ===== Liquid Glass — Sidebar ===== */
+/* Glint Browser — Glassmorphic sidebar styling */
+
+/* Sidebar main container box */
+#sidebar-box {
+  background: var(--glass-bg-default) !important;
+  backdrop-filter: blur(var(--glass-blur-heavy)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur-heavy)) !important;
+  border-right: var(--glass-border) !important;
+  min-width: var(--sidebar-width) !important;
+}
+
+/* Sidebar content area */
+#sidebar {
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-family: var(--font-body) !important;
+}
+
+/* Sidebar panel (bookmarks, history, etc.) */
+.sidebar-panel {
+  background: transparent !important;
+  color: inherit !important;
+}
+
+/* Sidebar header bar */
+#sidebar-header {
+  background: transparent !important;
+  border-bottom: var(--glass-border) !important;
+  padding: 8px 12px !important;
+  min-height: 40px !important;
+}
+
+/* Sidebar title text */
+#sidebar-title {
+  font-family: var(--font-display) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  letter-spacing: 0.3px !important;
+}
+
+/* Sidebar switcher target (dropdown to switch panels) */
+#sidebar-switcher-target {
+  background: var(--glass-bg-input) !important;
+  border: var(--glass-border) !important;
+  border-radius: var(--radius-sm) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  padding: 4px 8px !important;
+  transition: background 0.15s ease !important;
+}
+
+#sidebar-switcher-target:hover {
+  background: var(--glass-bg-hover) !important;
+}
+
+/* Sidebar splitter (draggable divider between sidebar and content) */
+.sidebar-splitter {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: none !important;
+  width: 3px !important;
+  transition: background 0.15s ease !important;
+}
+
+.sidebar-splitter:hover {
+  background: rgba(102, 126, 234, 0.3) !important;
+}
+
+/* Sidebar close button */
+#sidebar-close {
+  border-radius: 50% !important;
+  fill: rgba(255, 255, 255, 0.4) !important;
+  padding: 4px !important;
+}
+
+#sidebar-close:hover {
+  fill: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Sidebar tree content (bookmarks/history list items) */
+.sidebar-placesTreechildren {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-family: var(--font-body) !important;
+  font-size: 12px !important;
+}
+
+.sidebar-placesTreechildren::-moz-tree-row(hover) {
+  background: var(--glass-bg-hover) !important;
+}
+
+.sidebar-placesTreechildren::-moz-tree-row(selected) {
+  background: var(--glass-bg-active) !important;
+}
+
+.sidebar-placesTreechildren::-moz-tree-twisty {
+  fill: rgba(255, 255, 255, 0.5) !important;
+}

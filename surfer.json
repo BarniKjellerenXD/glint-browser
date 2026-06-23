@@ -1,0 +1,35 @@
+{
+  "name": "Glint",
+  "vendor": "BarniKjellerenXD",
+  "appId": "glint",
+  "binaryName": "glint",
+  "version": {
+    "product": "firefox",
+    "version": "152.0.2",
+    "candidate": "152.0.2",
+    "candidateBuild": 1
+  },
+  "buildOptions": {
+    "generateBranding": true,
+    "compileBase": "browser"
+  },
+  "addons": {},
+  "brands": {
+    "release": {
+      "backgroundColor": "#0F0F19",
+      "brandShorterName": "Glint",
+      "brandShortName": "Glint",
+      "brandFullName": "Glint Browser",
+      "release": {
+        "displayVersion": "0.1.0",
+        "github": {
+          "repo": "BarniKjellerenXD/glint-browser"
+        }
+      }
+    }
+  },
+  "license": {
+    "name": "MPL-2.0",
+    "content": "Mozilla Public License Version 2.0"
+  }
+}

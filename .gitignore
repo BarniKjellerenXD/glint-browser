@@ -1,0 +1,27 @@
+# Build artifacts
+engine/
+dist/
+artifacts/
+*.mar
+*.tar.bz2
+*.deb
+*.rpm
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# Build caches
+.sccache/
+ccache/

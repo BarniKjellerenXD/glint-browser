@@ -1,0 +1,32 @@
+// Glint Browser — DuckDuckGo Default Search
+// Set DuckDuckGo as the default search engine
+
+pref("browser.search.defaultenginename", "DuckDuckGo");
+pref("browser.search.order.1", "DuckDuckGo");
+pref("browser.urlbar.placeholderName", "DuckDuckGo");
+
+// Set region to US for DuckDuckGo availability
+pref("browser.search.region", "US");
+pref("browser.search.countryCode", "US");
+
+// Disable search suggestions (privacy)
+pref("browser.search.suggest.enabled", false);
+pref("browser.urlbar.suggest.searches", false);
+pref("browser.urlbar.quicksuggest.enabled", false);
+pref("browser.urlbar.quicksuggest.dataCollection.enabled", false);
+
+// Disable trending search suggestions
+pref("browser.urlbar.trending.featureGate", false);
+pref("browser.urlbar.quickactions.enabled", false);
+
+// Disable search engine choice UI
+pref("browser.search.separatePrivateDefault.ui.enabled", false);
+pref("browser.search.separatePrivateDefault", false);
+
+// Disable search onboarding prompt
+pref("browser.search.update", false);
+pref("browser.search.widget.inNavBar", false);
+
+// Default search for private windows
+pref("browser.search.separatePrivateDefault.urlbarEnabled", false);
+pref("browser.search.defaultenginename.private", "DuckDuckGo");

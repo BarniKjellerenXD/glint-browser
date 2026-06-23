@@ -1,0 +1,160 @@
+/* ===== Liquid Glass — Tab Bar ===== */
+/* Glint Browser — Glassmorphic tab styling */
+
+/* Individual tab */
+.tabbrowser-tab {
+  background: transparent !important;
+  border: none !important;
+  border-radius: var(--radius-md) var(--radius-md) 0 0 !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  font-family: var(--font-body) !important;
+  font-size: 12px !important;
+  margin: 0 1px !important;
+  min-height: var(--tab-height) !important;
+  transition: background 0.15s ease, color 0.15s ease !important;
+}
+
+/* Tab hover */
+.tabbrowser-tab:hover {
+  background: var(--glass-bg-hover) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Selected / active tab */
+.tabbrowser-tab[selected] {
+  background: var(--glass-bg-elevated) !important;
+  color: #ffffff !important;
+  box-shadow: 0 -1px 8px rgba(102, 126, 234, 0.12) !important;
+}
+
+/* Tab label — text inside tab */
+.tab-label {
+  font-family: var(--font-body) !important;
+  font-weight: 500 !important;
+  text-shadow: none !important;
+  line-height: 1.2 !important;
+}
+
+/* Selected tab label */
+.tabbrowser-tab[selected] .tab-label {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+/* Tab favicon */
+.tab-icon-image {
+  border-radius: 2px !important;
+}
+
+/* Close button on tabs */
+.tab-close-button {
+  border-radius: 50% !important;
+  fill: rgba(255, 255, 255, 0.4) !important;
+  padding: 2px !important;
+  transition: fill 0.15s ease, background 0.15s ease !important;
+}
+
+.tab-close-button:hover {
+  fill: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Hide close button on inactive tabs by default */
+.tabbrowser-tab:not([selected]) .tab-close-button {
+  fill: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Tab line — accent indicator for active tab */
+.tab-line {
+  background: var(--accent-gradient) !important;
+  height: 2px !important;
+  border-radius: 2px 2px 0 0 !important;
+}
+
+/* Tab background element */
+.tab-background {
+  border: var(--glass-border) !important;
+  border-bottom: none !important;
+  border-radius: var(--radius-md) var(--radius-md) 0 0 !important;
+}
+
+/* Tab stack container */
+.tab-stack {
+  border-radius: inherit !important;
+}
+
+/* Multiselected tabs */
+.tabbrowser-tab[multiselected] {
+  background: var(--glass-bg-active) !important;
+  color: #ffffff !important;
+}
+
+/* Tab drop indicator — shown during drag-and-drop reorder */
+.tab-drop-indicator {
+  background: var(--accent-gradient) !important;
+  width: 2px !important;
+  border-radius: 2px !important;
+}
+
+/* Tab bar container */
+#tabbrowser-tabs {
+  min-height: var(--tab-height) !important;
+  padding: 0 4px !important;
+}
+
+/* Scrollable tab container */
+.tabbrowser-arrowscrollbox {
+  border: none !important;
+}
+
+/* Scroll buttons (left/right arrows) */
+.scrollbutton-up,
+.scrollbutton-down {
+  background: var(--glass-bg-default) !important;
+  border: var(--glass-border) !important;
+  border-radius: var(--radius-sm) !important;
+  fill: rgba(255, 255, 255, 0.6) !important;
+  padding: 2px 4px !important;
+}
+
+.scrollbutton-up:hover,
+.scrollbutton-down:hover {
+  background: var(--glass-bg-hover) !important;
+  fill: #ffffff !important;
+}
+
+/* New tab button (+) */
+.tabs-newtab-button {
+  border-radius: var(--radius-sm) !important;
+  fill: rgba(255, 255, 255, 0.5) !important;
+  padding: 4px !important;
+  min-width: 28px !important;
+  transition: fill 0.15s ease, background 0.15s ease !important;
+}
+
+.tabs-newtab-button:hover {
+  fill: #ffffff !important;
+  background: var(--glass-bg-hover) !important;
+}
+
+/* All tabs button (dropdown) */
+#alltabs-button {
+  border-radius: var(--radius-sm) !important;
+  fill: rgba(255, 255, 255, 0.5) !important;
+}
+
+#alltabs-button:hover {
+  fill: #ffffff !important;
+  background: var(--glass-bg-hover) !important;
+}
+
+/* New tab button (separate from the plus icon) */
+#new-tab-button {
+  border-radius: var(--radius-sm) !important;
+  fill: rgba(255, 255, 255, 0.5) !important;
+}
+
+#new-tab-button:hover {
+  fill: #ffffff !important;
+  background: var(--glass-bg-hover) !important;
+}

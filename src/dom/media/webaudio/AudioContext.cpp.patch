@@ -1,0 +1,23 @@
+// GLINT FARBLING PATCH
+#include "mozilla/Preferences.h"
+#include "mozilla/glint/GlintFarbling.h"
+
+{
+  static bool audioNoiseEnabled = false;
+  static bool initialized = false;
+  if (!initialized) {
+    Preferences::AddBoolVarCache(&audioNoiseEnabled, "privacy.farbling.audio.noise", false);
+    initialized = true;
+  }
+
+  if (audioNoiseEnabled) {
+    nsAutoCString host;
+    nsresult rv = GetCurrentHost(host);
+    if (NS_SUCCEEDED(rv) && !host.IsEmpty()) {
+      uint32_t detuneCents = mozilla::glint::GlintFarbling::RandomizeValue(0, 10, host);
+      // Apply ±5 cents detune to oscillator frequency
+      aFrequency *= (1.0 + ((int32_t)(detuneCents - 5)) / 1000.0);
+    }
+  }
+}
+// END GLINT FARBLING PATCH

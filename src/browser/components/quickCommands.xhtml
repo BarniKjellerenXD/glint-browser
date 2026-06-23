@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://browser/skin/quickCommands.css" type="text/css"?>
+
+<!DOCTYPE overlay [
+  <!ENTITY % browserDTD SYSTEM "chrome://browser/locale/browser.dtd">
+  %browserDTD;
+]>
+
+<overlay id="quickCommandsOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+         xmlns:html="http://www.w3.org/1999/xhtml">
+
+  <script src="chrome://browser/content/quickCommands.js"/>
+
+  <!-- Keyboard shortcut registration -->
+  <commandset id="mainCommandSet">
+    <command id="cmd_quickCommands"
+             oncommand="QuickCommands.init(); QuickCommands.toggle();"/>
+    <key id="key_quickCommands"
+         key="E"
+         modifiers="accel"
+         command="cmd_quickCommands"/>
+  </commandset>
+
+  <!-- The spotlight overlay panel -->
+  <panel id="quickCommandsPanel"
+         type="arrow"
+         hidden="true"
+         noautofocus="false"
+         animate="fade"
+         role="dialog"
+         aria-label="Quick Commands"
+         orient="vertical"
+         flex="1">
+
+    <html:div id="quickCommandsBackdrop"/>
+
+    <html:div id="quickCommandsContainer">
+      <!-- Search input -->
+      <html:div id="quickCommandsSearchWrapper">
+        <html:input id="quickCommandsInput"
+                     type="text"
+                     autocomplete="off"
+                     spellcheck="false"
+                     placeholder="Type a command or search…"
+                     aria-label="Quick commands search"/>
+        <html:div id="quickCommandsClearBtn" hidden="true">
+          <html:span>&times;</html:span>
+        </html:div>
+      </html:div>
+
+      <!-- Results list -->
+      <html:div id="quickCommandsResults">
+        <html:div id="quickCommandsEmptyState" class="quick-commands-empty">
+          <html:div class="empty-icon">
+            <html:svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <html:circle cx="11" cy="11" r="8"/>
+              <html:line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </html:svg>
+          </html:div>
+          <html:p>Search for anything</html:p>
+          <html:small>Tabs, bookmarks, history, settings, and more</html:small>
+        </html:div>
+        <html:div id="quickCommandsResultList" class="quick-commands-list"/>
+      </html:div>
+
+      <!-- Footer with keyboard hints -->
+      <html:div id="quickCommandsFooter">
+        <html:div class="footer-hint-group">
+          <html:kbd class="hint-key">↑</html:kbd>
+          <html:kbd class="hint-key">↓</html:kbd>
+          <html:span class="hint-label">Navigate</html:span>
+        </html:div>
+        <html:div class="footer-hint-group">
+          <html:kbd class="hint-key">↵</html:kbd>
+          <html:span class="hint-label">Open</html:span>
+        </html:div>
+        <html:div class="footer-hint-group">
+          <html:kbd class="hint-key">Esc</html:kbd>
+          <html:span class="hint-label">Close</html:span>
+        </html:div>
+        <html:div class="footer-hint-group footer-hint-secondary">
+          <html:kbd class="hint-key">Tab</html:kbd>
+          <html:span class="hint-label">Search Web</html:span>
+        </html:div>
+      </html:div>
+    </html:div>
+  </panel>
+
+</overlay>

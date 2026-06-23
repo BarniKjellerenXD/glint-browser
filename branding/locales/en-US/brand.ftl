@@ -1,0 +1,4 @@
+-brand-shorter-name = Glint
+-brand-short-name = Glint
+-brand-full-name = Glint Browser
+-vendor-short-name = BarniKjellerenXD

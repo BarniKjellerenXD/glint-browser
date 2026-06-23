@@ -1,0 +1,98 @@
+/* ===== Liquid Glass — Wallpaper / Background ===== */
+/* Glint Browser — Animated glass wallpaper with aurora-shift keyframes */
+
+/* Custom wallpapered browser background */
+#browser-bg {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: -1 !important;
+  overflow: hidden !important;
+}
+
+/* ===== Aurora Shift Animation ===== */
+/* Slowly rotates hue for a subtle, organic colour drift */
+@keyframes aurora-shift {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(15deg);
+  }
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}
+
+/* Shared wallpaper base — every variant gets the animation */
+.wallpaper-aurora,
+.wallpaper-sunset,
+.wallpaper-ocean,
+.wallpaper-forest,
+.wallpaper-midnight {
+  position: absolute !important;
+  inset: 0 !important;
+  animation: aurora-shift 30s ease-in-out infinite !important;
+}
+
+/* ----- Aurora Theme ----- */
+.wallpaper-aurora {
+  background: linear-gradient(
+    135deg,
+    #0f0c29 0%,
+    #302b63 30%,
+    #24243e 50%,
+    #302b63 70%,
+    #0f0c29 100%
+  ) !important;
+}
+
+/* ----- Sunset Theme ----- */
+.wallpaper-sunset {
+  background: linear-gradient(
+    135deg,
+    #1a0a2e 0%,
+    #7303c0 25%,
+    #ec38bc 50%,
+    #f27121 75%,
+    #e65c00 100%
+  ) !important;
+}
+
+/* ----- Ocean Theme ----- */
+.wallpaper-ocean {
+  background: linear-gradient(
+    135deg,
+    #0a1628 0%,
+    #0d3b66 25%,
+    #1a759f 50%,
+    #4cc9f0 75%,
+    #72efdd 100%
+  ) !important;
+}
+
+/* ----- Forest Theme ----- */
+.wallpaper-forest {
+  background: linear-gradient(
+    135deg,
+    #0a1a0f 0%,
+    #1a3a2a 25%,
+    #2d6a4f 50%,
+    #52b788 75%,
+    #95d5b2 100%
+  ) !important;
+}
+
+/* ----- Midnight Theme ----- */
+.wallpaper-midnight {
+  background: linear-gradient(
+    135deg,
+    #050510 0%,
+    #0d0d2b 25%,
+    #1a1a3e 50%,
+    #2a2a5e 75%,
+    #1a1a3e 100%
+  ) !important;
+}

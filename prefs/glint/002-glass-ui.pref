@@ -1,0 +1,63 @@
+// Glint Browser — Glass Theme Defaults
+// Frosted glass / transparency UI theme preferences
+
+// === Glass UI Theme ===
+pref("glint.theme.glass.enabled", true);
+pref("glint.theme.glass.transparency", 0.75);
+pref("glint.theme.glass.blur", 12);
+pref("glint.theme.glass.saturation", 1.2);
+pref("glint.theme.glass.brightness", 0.9);
+pref("glint.theme.glass.tintColor", "#0F0F19");
+pref("glint.theme.glass.tintOpacity", 0.3);
+pref("glint.theme.glass.borderOpacity", 0.15);
+pref("glint.theme.glass.borderColor", "#667eea");
+
+// === Accent Colors (Gradient: #667eea → #764ba2) ===
+pref("glint.theme.accent.primary", "#667eea");
+pref("glint.theme.accent.secondary", "#764ba2");
+pref("glint.theme.accent.text", "#ffffff");
+pref("glint.theme.accent.hover", "#5a6fd6");
+pref("glint.theme.accent.active", "#4a5fc6");
+
+// === Glass UI Tab Bar ===
+pref("glint.theme.tabbar.glass", true);
+pref("glint.theme.tabbar.transparency", 0.7);
+pref("glint.theme.tabbar.blur", 8);
+pref("glint.theme.tabbar.height", 32);
+pref("glint.theme.tabbar.roundness", 8);
+pref("glint.theme.tabbar.pinnedWidth", 28);
+pref("glint.theme.tabbar.unified", true);
+
+// === Glass UI Navigation Bar ===
+pref("glint.theme.navbar.glass", true);
+pref("glint.theme.navbar.transparency", 0.65);
+pref("glint.theme.navbar.blur", 10);
+pref("glint.theme.navbar.roundness", 12);
+pref("glint.theme.navbar.urlbarRoundness", 8);
+pref("glint.theme.navbar.urlbarGlass", true);
+
+// === Glass UI Sidebar ===
+pref("glint.theme.sidebar.glass", true);
+pref("glint.theme.sidebar.transparency", 0.6);
+pref("glint.theme.sidebar.blur", 10);
+pref("glint.theme.sidebar.width", 280);
+pref("glint.theme.sidebar.collapsible", true);
+
+// === Glass UI Menus ===
+pref("glint.theme.menus.glass", true);
+pref("glint.theme.menus.transparency", 0.8);
+pref("glint.theme.menus.blur", 15);
+pref("glint.theme.menus.roundness", 8);
+pref("glint.theme.menus.popupShadow", true);
+
+// === Glass UI Scrollbars ===
+pref("glint.theme.scrollbars.glass", true);
+pref("glint.theme.scrollbars.thin", true);
+pref("glint.theme.scrollbars.width", 6);
+pref("glint.theme.scrollbars.accent", true);
+
+// === Glass UI Animations ===
+pref("glint.theme.animations.enabled", true);
+pref("glint.theme.animations.duration", 200);
+pref("glint.theme.animations.easing", "cubic-bezier(0.4, 0, 0.2, 1)");
+pref("glint.theme.animations.smoothResize", true);

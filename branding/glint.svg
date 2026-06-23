@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a14"/>
+      <stop offset="100%" stop-color="#0F0F19"/>
+    </linearGradient>
+    <linearGradient id="shineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#667eea" stop-opacity="0.7"/>
+      <stop offset="50%" stop-color="#764ba2" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#667eea" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#667eea" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#764ba2" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#667eea" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#667eea" stop-opacity="0.25"/>
+      <stop offset="50%" stop-color="#764ba2" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#667eea" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="innerGlow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="dropShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#667eea" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Outer glow ring -->
+  <rect x="8" y="8" width="496" height="496" rx="80" ry="80" fill="none" stroke="url(#glowGrad)" stroke-width="12" filter="url(#dropShadow)"/>
+
+  <!-- Main glass square -->
+  <rect x="16" y="16" width="480" height="480" rx="80" ry="80" fill="url(#bgGrad)" stroke="url(#borderGrad)" stroke-width="2"/>
+
+  <!-- Diagonal shine/reflection overlay -->
+  <rect x="16" y="16" width="480" height="480" rx="80" ry="80" fill="url(#shineGrad)" opacity="0.5"/>
+
+  <!-- Subtle top highlight -->
+  <rect x="16" y="16" width="480" height="240" rx="80" ry="80" fill="url(#shineGrad)" opacity="0.08"/>
+
+  <!-- Inner subtle edge highlight (top-left) -->
+  <rect x="24" y="24" width="464" height="464" rx="72" ry="72" fill="none" stroke="url(#borderGrad)" stroke-width="1" opacity="0.4"/>
+
+  <!-- G letter -->
+  <text x="256" y="318" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="280" font-weight="700" fill="rgba(255,255,255,0.82)" text-anchor="middle" dominant-baseline="central" filter="url(#innerGlow)">G</text>
+
+  <!-- Glass reflection accent -->
+  <rect x="60" y="60" width="180" height="8" rx="4" ry="4" fill="rgba(255,255,255,0.08)"/>
+  <rect x="60" y="76" width="120" height="4" rx="2" ry="2" fill="rgba(255,255,255,0.05)"/>
+</svg>

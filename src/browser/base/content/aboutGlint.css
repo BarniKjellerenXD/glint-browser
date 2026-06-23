@@ -1,0 +1,255 @@
+/* ==========================================================================
+ * aboutGlint.css — New Tab Page styling
+ *
+ * Dark gradient background, centered glass panel, search bar, and
+ * quick-dial grid tiles.
+ * ========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   Container — vertical stack centered on the page
+   --------------------------------------------------------------------------- */
+
+#glintContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  width: 100%;
+  max-width: 680px;
+  padding: 24px;
+  z-index: 1;
+  position: relative;
+}
+
+/* ---------------------------------------------------------------------------
+   Greeting
+   --------------------------------------------------------------------------- */
+
+#glintGreeting {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.greeting-text {
+  font-size: 42px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #e2e8f0 30%, #a78bfa 70%, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* ---------------------------------------------------------------------------
+   Search bar — glassmorphism input
+   --------------------------------------------------------------------------- */
+
+#glintSearchWrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 560px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 16px;
+  padding: 4px 4px 4px 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+#glintSearchWrapper:focus-within {
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.12), 0 8px 32px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.search-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+#glintSearchInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 14px 12px;
+  font-size: 16px;
+  font-family: inherit;
+  color: #e2e8f0;
+  outline: none;
+}
+
+#glintSearchInput::placeholder {
+  color: rgba(255, 255, 255, 0.30);
+  font-size: 15px;
+}
+
+/* ---------------------------------------------------------------------------
+   Top Sites / Quick Dial section
+   --------------------------------------------------------------------------- */
+
+#glintDialSection {
+  width: 100%;
+}
+
+.dial-section-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 16px;
+  padding-left: 4px;
+}
+
+.dial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 12px;
+}
+
+/* ---------------------------------------------------------------------------
+   Individual tile
+   --------------------------------------------------------------------------- */
+
+.dial-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 8px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+  user-select: none;
+}
+
+.dial-tile:hover {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(139, 92, 246, 0.25);
+  transform: translateY(-2px);
+}
+
+.dial-tile:active {
+  transform: translateY(0);
+  background: rgba(139, 92, 246, 0.12);
+}
+
+.dial-tile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.40);
+  flex-shrink: 0;
+}
+
+.dial-tile-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.dial-tile-placeholder {
+  opacity: 0.5;
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.dial-tile-placeholder:hover {
+  opacity: 0.8;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ---------------------------------------------------------------------------
+   Background orbs (decorative)
+   --------------------------------------------------------------------------- */
+
+.glint-bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(80px);
+  opacity: 0.15;
+}
+
+.glint-bg-orb-1 {
+  width: 600px;
+  height: 600px;
+  top: -200px;
+  right: -150px;
+  background: radial-gradient(circle, #8b5cf6, transparent 70%);
+}
+
+.glint-bg-orb-2 {
+  width: 500px;
+  height: 500px;
+  bottom: -150px;
+  left: -100px;
+  background: radial-gradient(circle, #6d28d9, transparent 70%);
+}
+
+.glint-bg-orb-3 {
+  width: 300px;
+  height: 300px;
+  top: 40%;
+  left: 60%;
+  background: radial-gradient(circle, #a78bfa, transparent 70%);
+}
+
+/* ---------------------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .greeting-text {
+    font-size: 28px;
+  }
+
+  .dial-grid {
+    grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+    gap: 8px;
+  }
+
+  .dial-tile {
+    padding: 12px 6px 8px;
+  }
+
+  #glintSearchInput {
+    font-size: 14px;
+    padding: 12px 8px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Reduced motion
+   --------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .dial-tile {
+    transition: none;
+  }
+
+  #glintSearchWrapper {
+    transition: none;
+  }
+}

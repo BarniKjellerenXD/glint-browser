@@ -1,0 +1,46 @@
+/* ===== Liquid Glass Design Tokens ===== */
+/* Glint Browser — Complete Design Token System */
+/* All CSS custom properties defined in a single :root block */
+
+:root {
+  /* ----- Glass Backgrounds ----- */
+  --glass-bg-default: rgba(10, 10, 20, 0.7);
+  --glass-bg-elevated: rgba(20, 20, 35, 0.85);
+  --glass-bg-active: rgba(255, 255, 255, 0.08);
+  --glass-bg-hover: rgba(255, 255, 255, 0.04);
+  --glass-bg-input: rgba(0, 0, 0, 0.25);
+
+  /* ----- Blur Intensities ----- */
+  --glass-blur-subtle: 12px;
+  --glass-blur-medium: 18px;
+  --glass-blur-heavy: 24px;
+
+  /* ----- Borders ----- */
+  --glass-border: 1px solid rgba(255, 255, 255, 0.06);
+  --glass-border-focus: 1px solid rgba(102, 126, 234, 0.4);
+
+  /* ----- Shadows ----- */
+  --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --glass-shadow-lg: 0 8px 48px rgba(0, 0, 0, 0.4);
+  --glass-glow: 0 0 20px rgba(102, 126, 234, 0.15);
+
+  /* ----- Accent Gradients ----- */
+  --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  --accent-gradient-2: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  --accent-gradient-3: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+
+  /* ----- Border Radii ----- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* ----- Dimensions ----- */
+  --toolbar-height: 44px;
+  --tab-height: 36px;
+  --sidebar-width: 280px;
+
+  /* ----- Typography ----- */
+  --font-display: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}

@@ -1,0 +1,61 @@
+// Glint Browser — uBlock Origin Built-in Preferences
+// Built-in adblocking preferences (uBlock Origin integration)
+
+// === uBlock Origin Engine ===
+pref("glint.adblock.enabled", true);
+pref("glint.adblock.engine", "ublock-origin");
+pref("glint.adblock.autoUpdate", true);
+pref("glint.adblock.updateInterval", 24); // hours
+
+// === Filter Lists ===
+pref("glint.adblock.filters.ads", true);
+pref("glint.adblock.filters.privacy", true);
+pref("glint.adblock.filters.malware", true);
+pref("glint.adblock.filters.annoyances", true);
+pref("glint.adblock.filters.social", true);
+pref("glint.adblock.filters.cookies", false);
+pref("glint.adblock.filters.tracking", true);
+
+// === Default Filter Lists ===
+pref("glint.adblock.lists.default", "ublock-filters");
+pref("glint.adblock.lists.privacy", "ublock-privacy");
+pref("glint.adblock.lists.badware", "ublock-badware");
+pref("glint.adblock.lists.annoyance", "ublock-annoyances");
+pref("glint.adblock.lists.unbreak", "ublock-unbreak");
+
+// === Cosmetic Filtering ===
+pref("glint.adblock.cosmetic.enabled", true);
+pref("glint.adblock.cosmetic.rejectScripts", true);
+pref("glint.adblock.cosmetic.hideElements", true);
+pref("glint.adblock.cosmetic.hidePopups", true);
+
+// === Advanced Mode ===
+pref("glint.adblock.advanced.enabled", false);
+pref("glint.adblock.advanced.dynamicFiltering", false);
+pref("glint.adblock.advanced.noLargeMedia", false);
+pref("glint.adblock.advanced.noRemoteFonts", false);
+
+// === Per-Site Controls ===
+pref("glint.adblock.persite.enabled", true);
+pref("glint.adblock.persite.defaultAction", "block");
+pref("glint.adblock.persite.allowList", "");
+pref("glint.adblock.persite.blockList", "");
+pref("glint.adblock.persite.trustedDomains", "");
+
+// === Performance ===
+pref("glint.adblock.performance.cacheSize", 50); // MB
+pref("glint.adblock.performance.lazyLoad", true);
+pref("glint.adblock.performance.deferFiltering", true);
+pref("glint.adblock.performance.maxMemory", 100); // MB
+
+// === Logging & Debugging ===
+pref("glint.adblock.logging.enabled", false);
+pref("glint.adblock.logging.level", "warn");
+pref("glint.adblock.logging.maxEntries", 1000);
+
+// === UI ===
+pref("glint.adblock.ui.showBadge", true);
+pref("glint.adblock.ui.showToolbarButton", true);
+pref("glint.adblock.ui.showStats", true);
+pref("glint.adblock.ui.showBlockCount", true);
+pref("glint.adblock.ui.blockedCountColor", "#667eea");

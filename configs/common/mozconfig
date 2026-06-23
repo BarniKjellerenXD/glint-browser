@@ -1,0 +1,22 @@
+ac_add_options --with-app-name=glint
+export MOZ_USER_DIR="Glint"
+export MOZ_APP_BASENAME=glint
+export MOZ_DISTRIBUTION_ID=glint
+
+# Ryzen 7800X3D — 8 cores / 16 threads, fast build
+mk_add_options MOZ_MAKE_FLAGS="-j16"
+ac_add_options --enable-linker=lld
+
+# Remove Mozilla services
+ac_add_options --disable-crashreporter
+ac_add_options --disable-updater
+ac_add_options --disable-parental-controls
+ac_add_options --disable-pocket
+
+# Performance
+ac_add_options --enable-optimize
+ac_add_options --disable-debug
+ac_add_options --with-ccache=sccache
+
+# Bootstrap
+ac_add_options --enable-bootstrap

@@ -1,0 +1,78 @@
+// Glint Browser — Telemetry Disabled
+// Completely disable ALL telemetry, data collection, and remote content
+
+// Disable Firefox telemetry
+pref("datareporting.healthreport.uploadEnabled", false);
+pref("datareporting.policy.dataSubmissionEnabled", false);
+pref("datareporting.sessions.current.clean", true);
+pref("datareporting.sessions.current.first", true);
+
+// Disable telemetry data choices
+pref("toolkit.telemetry.archive.enabled", false);
+pref("toolkit.telemetry.bhrPing.enabled", false);
+pref("toolkit.telemetry.cachedClientID", "");
+pref("toolkit.telemetry.enabled", false);
+pref("toolkit.telemetry.firstShutdownPing.enabled", false);
+pref("toolkit.telemetry.hybridContent.enabled", false);
+pref("toolkit.telemetry.newProfilePing.enabled", false);
+pref("toolkit.telemetry.prompted", 2);
+pref("toolkit.telemetry.rejected", true);
+pref("toolkit.telemetry.reportingpolicy.firstRun", false);
+pref("toolkit.telemetry.server", "data:,");
+pref("toolkit.telemetry.shutdownPingSender.enabled", false);
+pref("toolkit.telemetry.unified", false);
+pref("toolkit.telemetry.updatePing.enabled", false);
+
+// Disable Firefox Health Report
+pref("browser.healthreport.uploadEnabled", false);
+pref("browser.selfsupport.url", "");
+
+// Disable Normandy/Shield studies
+pref("app.normandy.enabled", false);
+pref("app.normandy.api_url", "");
+pref("app.shield.optoutstudies.enabled", false);
+
+// Disable crash reporting
+pref("browser.crashReports.unsubmittedCheck.enabled", false);
+pref("browser.crashReports.unsubmittedCheck.autoSubmit2", false);
+pref("browser.tabs.crashReporting.sendReport", false);
+pref("browser.crashReports.unsubmittedCheck.autoSubmit", false);
+
+// Disable experiments
+pref("experiments.enabled", false);
+pref("experiments.supported", false);
+pref("experiments.activeExperiment", false);
+pref("network.allow-experiments", false);
+
+// Disable beacon API (used for telemetry)
+pref("beacon.enabled", false);
+
+// Disable captive portal (avoids external request)
+pref("network.captive-portal-service.enabled", false);
+pref("captivedetect.canonicalURL", "");
+pref("network.connectivity-service.enabled", false);
+
+// Disable safebrowsing (reduces Google pings)
+pref("browser.safebrowsing.enabled", false);
+pref("browser.safebrowsing.malware.enabled", false);
+pref("browser.safebrowsing.phishing.enabled", false);
+pref("browser.safebrowsing.downloads.enabled", false);
+pref("browser.safebrowsing.downloads.remote.block_potentially_unwanted", false);
+pref("browser.safebrowsing.downloads.remote.block_uncommon", false);
+pref("browser.safebrowsing.downloads.remote.url", "");
+pref("browser.safebrowsing.downloads.remote.block_potentially_unwanted", false);
+pref("browser.safebrowsing.allowOverride", false);
+
+// Disable Mozilla location service
+pref("geo.wifi.uri", "");
+pref("browser.search.geoip.url", "");
+
+// Disable remote settings
+pref("services.settings.server", "");
+pref("security.remote_settings.crlite_filters.enabled", false);
+pref("security.remote_settings.intermediates.enabled", false);
+
+// Disable background updates
+pref("app.update.auto", false);
+pref("app.update.enabled", false);
+pref("app.update.service.enabled", false);

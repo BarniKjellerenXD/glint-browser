@@ -1,0 +1,27 @@
+// GLINT FARBLING PATCH
+#include "mozilla/Preferences.h"
+#include "mozilla/glint/GlintFarbling.h"
+
+{
+  static bool farblingEnabled = false;
+  static bool initialized = false;
+  if (!initialized) {
+    Preferences::AddBoolVarCache(&farblingEnabled, "privacy.farbling.enabled", false);
+    initialized = true;
+  }
+
+  if (farblingEnabled) {
+    nsAutoCString host;
+    nsresult rv = GetCurrentHost(host);
+    if (NS_SUCCEEDED(rv) && !host.IsEmpty()) {
+      uint32_t min = Preferences::GetUint("privacy.farbling.hardwareConcurrency.min", 2);
+      uint32_t max = Preferences::GetUint("privacy.farbling.hardwareConcurrency.max", 8);
+      if (min > max) {
+        min = 2;
+        max = 8;
+      }
+      return mozilla::glint::GlintFarbling::RandomizeValue(min, max, host);
+    }
+  }
+}
+// END GLINT FARBLING PATCH

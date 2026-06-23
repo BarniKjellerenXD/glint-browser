@@ -1,0 +1,51 @@
+// Glint Browser — Farbling Preferences
+// Enhanced fingerprinting protection with fine-grained farbling controls
+
+// === RFP (ResistFingerprinting) Overrides ===
+pref("privacy.resistFingerprinting", true);
+pref("privacy.resistFingerprinting.autoDeclineNoUserInputCanvasPrompts", true);
+pref("privacy.resistFingerprinting.block_mozAddonManager", true);
+
+// === WebGL Farbling ===
+pref("webgl.disabled", false);
+pref("webgl.renderer-string-override", "Glint WebGL");
+pref("webgl.vendor-string-override", "Glint Graphics");
+pref("webgl.enable-webgl2", true);
+pref("webgl.min_capability_mode", true);
+pref("webgl.angle.try-d3d11", false);
+pref("webgl.force-enabled", false);
+pref("webgl.perf.max-warnings", 0);
+
+// === Canvas Farbling ===
+pref("privacy.resistFingerprinting.autoDeclineNoUserInputCanvasPrompts", true);
+pref("canvas.capturestream.enabled", false);
+pref("canvas.fingerprinting.max-random-offset", 64);
+pref("canvas.cache.max-size", 0);
+pref("canvas.cache.enabled", false);
+
+// === Audio Farbling ===
+pref("media.getusermedia.audiocapture.enabled", false);
+pref("media.getusermedia.browser.enabled", false);
+pref("media.navigator.enabled", false);
+pref("media.recorder.video.frame_drops", true);
+
+// === Font Farbling ===
+pref("layout.css.font-visibility.enabled", false);
+pref("font.system.whitelist", "");
+pref("gfx.downloadable_fonts.enabled", false);
+pref("gfx.downloadable_fonts.otl_tagging", false);
+pref("browser.display.use_document_fonts", 0); // use system fonts only
+
+// === Timezone & Locale Farbling ===
+pref("privacy.spoof_english", 2);
+pref("javascript.use_us_english_locale", true);
+pref("intl.accept_languages", "en-US, en");
+pref("intl.locale.requested", "en-US");
+pref("privacy.resistFingerprinting.spoof_timestamp_events", 1);
+
+// === Screen & Window Farbling ===
+pref("browser.window.maxInnerWidth", 1920);
+pref("browser.window.maxInnerHeight", 1080);
+pref("browser.fullscreen.autohide", true);
+pref("widget.window_rounding", 1);
+pref("ui.osk.enabled", false);

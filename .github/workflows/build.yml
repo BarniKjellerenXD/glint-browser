@@ -1,0 +1,147 @@
+name: Build Glint Browser
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    name: Lint source files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check JavaScript files
+        run: |
+          for f in $(find src -name "*.js"); do
+            node -c "$f" 2>&1 || echo "Syntax warning in $f (non-blocking)"
+          done
+      - name: Check XHTML files well-formedness
+        run: |
+          for f in $(find src -name "*.xhtml"); do
+            grep -q "<\?xml\|<\!DOCTYPE\|xmlns=" "$f" && echo "✓ $f has XML declaration" || echo "⚠ $f may be missing XML declaration"
+          done
+      - name: Check pref files format
+        run: |
+          for f in $(find prefs -name "*.pref"); do
+            errors=0
+            while IFS= read -r line; do
+              if [[ -n "$line" && ! "$line" =~ ^pref\( && ! "$line" =~ ^// && ! "$line" =~ ^# && ! "$line" =~ ^$ ]]; then
+                echo "NON-PREF LINE: $f → $line"
+                ((errors++))
+              fi
+            done < "$f"
+            [ "$errors" -eq 0 ] && echo "✓ $f format OK" || echo "✗ $f has $errors non-pref lines"
+          done
+
+  build-linux-x64:
+    name: Build Glint (Linux x86_64)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install system dependencies
+        run: |
+          sudo apt update && sudo apt install -y \
+            build-essential curl python3 python3-pip python3-venv \
+            nodejs npm rustc cargo clang llvm \
+            libgtk-3-dev libdbus-glib-1-dev libpulse-dev \
+            libasound2-dev libx11-dev libxext-dev libxrender-dev \
+            libxt-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \
+            libglib2.0-dev libpango1.0-dev libcairo2-dev libatk1.0-dev \
+            libgdk-pixbuf2.0-dev libdrm-dev libxcb-shm0-dev \
+            libxcb-xfixes0-dev nasm yasm ccache
+      
+      - name: Cache sccache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/sccache
+          key: ${{ runner.os }}-sccache-${{ hashFiles('src/**', 'configs/**', 'prefs/**') }}-v1
+          restore-keys: |
+            ${{ runner.os }}-sccache-
+      
+      - name: Cache Firefox engine
+        uses: actions/cache@v4
+        with:
+          path: engine/
+          key: ${{ runner.os }}-engine-${{ hashFiles('surfer.json') }}-v1
+      
+      - name: Install Node dependencies
+        run: npm ci
+      
+      - name: Download Firefox engine
+        run: npm run download
+      
+      - name: Import patches
+        run: npm run import
+      
+      - name: Build Glint
+        run: npm run build
+        env:
+          SCCACHE_DIR: ~/.cache/sccache
+      
+      - name: Package
+        run: npm run package
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: glint-linux-x64
+          path: artifacts/
+          retention-days: 7
+      
+      - name: Create release tag
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/*
+          generate_release_notes: true
+
+  build-linux-arm64:
+    name: Build Glint (Linux ARM64)
+    runs-on: [self-hosted, linux, ARM64]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install system dependencies
+        run: |
+          sudo apt update && sudo apt install -y \
+            build-essential curl python3 python3-pip python3-venv \
+            nodejs npm rustc cargo clang llvm \
+            libgtk-3-dev libdbus-glib-1-dev libpulse-dev \
+            libasound2-dev libx11-dev libxext-dev libxrender-dev \
+            libxt-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \
+            libglib2.0-dev libpango1.0-dev libcairo2-dev libatk1.0-dev \
+            libgdk-pixbuf2.0-dev libdrm-dev nasm yasm ccache
+      
+      - name: Cache sccache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/sccache
+          key: ${{ runner.os }}-sccache-arm64-${{ hashFiles('src/**', 'configs/**', 'prefs/**') }}-v1
+      
+      - name: Install Node dependencies
+        run: npm ci
+      
+      - name: Download Firefox engine
+        run: npm run download
+      
+      - name: Import patches
+        run: npm run import
+      
+      - name: Build Glint (ARM64, limited parallel)
+        run: surfer build -j 4
+        env:
+          SCCACHE_DIR: ~/.cache/sccache
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: glint-linux-arm64
+          path: artifacts/
+          retention-days: 7

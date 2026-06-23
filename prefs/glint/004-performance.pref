@@ -1,0 +1,70 @@
+// Glint Browser — Performance & Tab Suspend Preferences
+// Memory optimization through automatic tab suspension
+
+// === Tab Suspension ===
+pref("glint.performance.tabSuspend.enabled", true);
+pref("glint.performance.tabSuspend.timeout", 30); // minutes of inactivity
+pref("glint.performance.tabSuspend.excludePinned", true);
+pref("glint.performance.tabSuspend.excludeActive", true);
+pref("glint.performance.tabSuspend.excludeAudio", true);
+pref("glint.performance.tabSuspend.excludeForms", true);
+pref("glint.performance.tabSuspend.discardOnSuspend", true);
+
+// === Tab Discard ===
+pref("glint.performance.tabDiscard.enabled", true);
+pref("glint.performance.tabDiscard.timeout", 120); // minutes
+pref("glint.performance.tabDiscard.maxTabs", 50);
+pref("glint.performance.tabDiscard.minTabs", 8);
+pref("glint.performance.tabDiscard.memoryThreshold", 80); // percent
+
+// === Memory Management ===
+pref("glint.performance.memory.compactOnMinimize", true);
+pref("glint.performance.memory.compactInterval", 5); // minutes
+pref("glint.performance.memory.releaseUnused", true);
+pref("glint.performance.memory.gcInterval", 10); // minutes
+pref("glint.performance.memory.maxHeapSize", 1024); // MB
+pref("glint.performance.memory.lowMemoryThreshold", 256); // MB
+
+// === Session Restoration ===
+pref("glint.performance.session.restoreOnDemand", true);
+pref("glint.performance.session.restorePinnedOnDemand", false);
+pref("glint.performance.session.maxTabsRestore", 10);
+pref("glint.performance.session.deferredRestore", true);
+pref("glint.performance.session.restoreTimeout", 5000); // ms
+
+// === Hardware Acceleration ===
+pref("glint.performance.hardwareAccel.enabled", true);
+pref("glint.performance.hardwareAccel.webrender", true);
+pref("glint.performance.hardwareAccel.compositor", "webrender");
+pref("glint.performance.hardwareAccel.videoDecode", true);
+pref("glint.performance.hardwareAccel.videoEncode", true);
+pref("glint.performance.hardwareAccel.layersAcceleration", true);
+
+// === Content Process ===
+pref("glint.performance.contentProcess.limit", 8);
+pref("glint.performance.contentProcess.lowMemoryLimit", 4);
+pref("glint.performance.contentProcess.unusedTimeout", 5); // seconds
+pref("glint.performance.contentProcess.recycle", true);
+
+// === Network Throttling ===
+pref("glint.performance.network.throttleInactiveTabs", true);
+pref("glint.performance.network.inactiveTabTimeout", 10); // seconds
+pref("glint.performance.network.priorityActiveTab", true);
+
+// === Animation & Rendering ===
+pref("glint.performance.animation.smoothScroll", true);
+pref("glint.performance.animation.frameRate", 60);
+pref("glint.performance.animation.adaptiveRefresh", true);
+pref("glint.performance.animation.reduceMotion", false);
+
+// === Background Tabs ===
+pref("glint.performance.backgroundTabs.suspend", true);
+pref("glint.performance.backgroundTabs.throttleResize", true);
+pref("glint.performance.backgroundTabs.throttleTimers", true);
+pref("glint.performance.backgroundTabs.limitMutationObserver", true);
+pref("glint.performance.backgroundTabs.throttleRequestAnimationFrame", true);
+
+// === Profiling ===
+pref("glint.performance.profiling.enabled", false);
+pref("glint.performance.profiling.memoryReports", false);
+pref("glint.performance.profiling.tabActivity", false);
