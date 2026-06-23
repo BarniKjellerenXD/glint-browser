@@ -51,17 +51,13 @@ uint32_t GlintFarbling::RandomizeValue(uint32_t aMin, uint32_t aMax,
 }
 
 void GlintFarbling::AddCanvasNoise(uint8_t* aData, uint32_t aWidth,
-                                    uint32_t aHeight) {
+                                    uint32_t aHeight, const nsACString& aHost) {
   if (!aData || aWidth == 0 || aHeight == 0) {
     return;
   }
 
   // Use host hash as seed for deterministic noise
-  nsAutoCString host;
-  // Note: Host must be retrieved from the document context before calling
-  // GetHostHash(aHost) with an actual host. If host is empty, generate
-  // a default seed.
-  uint32_t seed = 0xDEADBEEF;
+  uint32_t seed = GetHostHash(aHost);
 
   // Select a random pixel based on the width/height dimensions
   uint32_t pixelOffset = (seed * aWidth) % (aWidth * aHeight);

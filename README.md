@@ -13,6 +13,7 @@
   <img src="https://img.shields.io/badge/engine-Gecko-blue" alt="Engine: Gecko">
   <img src="https://img.shields.io/badge/license-MPL--2.0-purple" alt="License: MPL-2.0">
   <img src="https://img.shields.io/badge/status-alpha-orange" alt="Status: Alpha">
+  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20Linux-lightgrey" alt="Platform: Windows | Linux">
 </p>
 
 ---
@@ -20,8 +21,8 @@
 ## ✨ Features
 
 ### 🛡️ Privacy (Brave-level)
-- **Fingerprint Farbling** — Per-eTLD+1 randomization of hardwareConcurrency, screen resolution, canvas fingerprints, WebAudio, and plugin lists
-- **Enhanced Tracking Protection** — Strict mode by default with social tracking, fingerprinting, and cryptomining blocked
+- **Fingerprint protection** — Firefox's ResistFingerprinting enabled by default + letterboxing
+- **Enhanced Tracking Protection** — Strict mode with social tracking, fingerprinting, and cryptomining blocked
 - **HTTPS-Only mode** enabled by default
 - **DNS over HTTPS** via Quad9
 - **Telemetry fully stripped** — no Mozilla services, no studies, no experiments
@@ -37,13 +38,10 @@
 - Universal spotlight search — **Ctrl+E** opens a glassmorphism overlay
 - Searches across: open tabs, bookmarks, history, browser commands, settings, and the web
 - 24 built-in commands: New Tab, New Window, Switch Profile, Mute Tab, Screenshot, DevTools, and more
-- Fuzzy search with section-grouped results
 - Keyboard navigation (↑↓↵Esc)
 
 ### 🧩 Features
 - **Built-in uBlock Origin** — bundled and locked (non-removable)
-- **Web panels** — embed sites like WhatsApp, Discord, or Calendar in the sidebar
-- **Notes widget** — rich text editor in the sidebar
 - **Vertical tabs** — inherited from Zen Browser
 - **Workspaces** — tab groups and workspace switching
 - **Tab suspend** — automatically free memory from inactive tabs
@@ -51,21 +49,77 @@
 
 ---
 
-## 🚀 Building
+## 🚀 Building on Windows
 
 ### Prerequisites
 
-| Requirement | Minimum |
-|------------|---------|
-| RAM | 16GB (32GB recommended) |
-| CPU | 4+ cores (8+ recommended) |
-| Disk | 40GB free |
-| OS | Linux (x86_64 or ARM64) |
+| Requirement | Notes |
+|------------|-------|
+| Windows 10/11 64-bit | Required |
+| **7-Zip** | [Download here](https://7-zip.org/download.html) — needed to extract Firefox source |
+| **Visual Studio 2022** | [Community Edition (free)](https://visualstudio.microsoft.com/vs/community/) — install with "Desktop development with C++" workload |
+| **Windows SDK** | Comes with Visual Studio 2022 |
+| **Python 3** | [Download here](https://www.python.org/downloads/) — check "Add to PATH" |
+| **Node.js 18+** | [Download here](https://nodejs.org/) |
+| **Rust** | Run: `rustup-init.exe` from https://rustup.rs/ |
 
-### Build Steps
+### Step-by-step
+
+```powershell
+# 1. Clone the repo
+git clone https://github.com/BarniKjellerenXD/glint-browser.git
+cd glint-browser
+
+# 2. Install Surfer and dependencies
+npm install
+
+# 3. Download Firefox source code
+npm run download
+# ⚠ If you get '7z' not found: either install 7-Zip and add to PATH,
+#    or manually extract .surfer\engine\firefox-*.source.tar.xz to engine\
+
+# 4. Apply Glint patches onto Firefox source
+npm run import
+
+# 5. Bootstrap the build environment (installs MozillaBuild, etc.)
+npm run bootstrap
+
+# 6. Build! This takes 30-60 minutes on first run
+npm run build
+
+# 7. Run the browser
+cd engine
+python mach run
+```
+
+### Fast Iteration (UI changes only)
+
+After the first full build, UI changes (CSS/JS) rebuild in 2-5 minutes:
+
+```powershell
+# Edit files in src/, then:
+npm run import
+npm run build:ui
+cd engine
+python mach run
+```
+
+### Troubleshooting
+
+| Error | Solution |
+|-------|----------|
+| `'7z' is not recognized` | Install 7-Zip and add `C:\Program Files\7-Zip\` to your PATH, then restart terminal |
+| `cl.exe not found` | Run from **"Developer Command Prompt for VS 2022"** instead of regular PowerShell |
+| `python not found` | Install Python 3, check "Add to PATH", restart terminal |
+| `mach build fails` | Ensure you ran `npm run bootstrap` first — it installs Mozilla's build dependencies |
+| Linker errors | Run from VS Developer Command Prompt, not regular PowerShell |
+
+---
+
+## 🚀 Building on Linux
 
 ```bash
-# 1. Install system dependencies (Debian/Ubuntu)
+# Install dependencies
 sudo apt update && sudo apt install -y \
   build-essential curl python3 python3-pip python3-venv \
   nodejs npm rustc cargo clang llvm \
@@ -76,38 +130,14 @@ sudo apt update && sudo apt install -y \
   libgdk-pixbuf2.0-dev libdrm-dev libxcb-shm0-dev \
   libxcb-xfixes0-dev nasm yasm ccache
 
-# 2. Clone and build
+# Clone and build
 git clone https://github.com/BarniKjellerenXD/glint-browser.git
 cd glint-browser
 npm install
-npm run download      # Downloads Firefox engine (~4GB)
-npm run import        # Applies Glint patches
-npm run build         # Full build (~30-60 min)
-
-# 3. Run
-npm run start         # Launch with temp profile
-# OR
-npm run start:profile # Launch with persistent profile
-```
-
-### Fast Iteration (UI changes only)
-
-After the first full build, UI changes (CSS/JS/XHTML) rebuild in ~2-5 minutes:
-
-```bash
-# Edit files in src/, then:
+npm run download
 npm run import
-npm run build:ui
-npm run start
-```
-
-### C++ Changes
-
-After modifying farbling patches or other C++ code:
-
-```bash
-npm run import
-npm run build  # Full rebuild required for C++ changes
+npm run build
+cd engine && python3 ./mach run
 ```
 
 ---
@@ -118,18 +148,20 @@ npm run build  # Full rebuild required for C++ changes
 glint-browser/
 ├── branding/            # App icon, locale files, brand identity
 ├── configs/             # Build configuration per platform
+│   ├── common/          # Shared mozconfig (all platforms)
+│   └── windows/         # Windows-specific build flags
 ├── prefs/               # Default preference overrides
 │   ├── firefox/         # Firefox privacy & telemetry overrides
 │   └── glint/           # Glint-specific preferences
 ├── src/                 # 🔥 Glint's custom code — patches against Firefox
 │   ├── browser/         # Browser chrome (XUL/JS/CSS)
 │   │   ├── base/        # about:glint page
-│   │   ├── components/  # Quick Commands, settings, notes
+│   │   ├── components/  # Quick Commands, settings engine
 │   │   └── themes/      # Liquid Glass CSS theme
-│   ├── dom/             # DOM engine patches (farbling)
-│   ├── glint/           # C++ utility components
-│   └── netwerk/         # Network hooks
+│   ├── glint/           # C++ utility components (farbling engine)
+│   └── ...              # Other Firefox directory mirrors
 ├── engine/              # ⚡ Firefox source (auto-downloaded, not committed)
+├── .surfer/             # Surfer cache (downloads, temp files)
 ├── surfer.json          # Surfer build configuration
 └── package.json         # Build scripts
 ```
@@ -155,16 +187,16 @@ glint-browser/
 
 ## 🗺️ Roadmap
 
-- **v0.1.0** (Current) — Foundation: Liquid Glass UI, Quick Commands, fingerprint farbling, uBlock Origin
-- **v0.2.0** — Native Rust adblock engine, macOS build
-- **v0.3.0** — Full customization editor, theme store concept, Windows build
+- **v0.1.0** (Current) — Foundation: Liquid Glass UI, Quick Commands, privacy hardening, uBlock Origin
+- **v0.2.0** — Native C++ fingerprint farbling, macOS build
+- **v0.3.0** — Full customization editor, theme store concept, native adblock engine
 - **v1.0.0** — Stable release, cross-platform, performance tuning
 
 ---
 
 ## 📜 License
 
-Glint Browser is licensed under the **Mozilla Public License 2.0**. See [LICENSE](LICENSE) for details.
+Glint Browser is licensed under the **Mozilla Public License 2.0**.
 
 Built on [Zen Browser](https://github.com/zen-browser/desktop) (MPL-2.0) and [Mozilla Firefox](https://hg.mozilla.org/mozilla-central) (MPL-2.0).
 

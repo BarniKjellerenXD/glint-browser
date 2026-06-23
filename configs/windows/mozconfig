@@ -1,0 +1,22 @@
+# Windows build config for Glint Browser
+ac_add_options --target=x86_64-pc-mingw32
+ac_add_options --enable-js-shell
+ac_add_options --enable-rust-simd
+
+# Ryzen 7800X3D — 8 cores / 16 threads
+mk_add_options MOZ_MAKE_FLAGS="-j16"
+
+# Remove Mozilla services
+ac_add_options --disable-crashreporter
+ac_add_options --disable-updater
+ac_add_options --disable-parental-controls
+ac_add_options --disable-pocket
+
+# Performance
+ac_add_options --enable-optimize
+ac_add_options --disable-debug
+ac_add_options --enable-bootstrap
+
+# Telemetry and data reporting — fully disabled
+mk_add_options MOZ_TELEMETRY_REPORTING=
+mk_add_options MOZ_DATA_REPORTING=

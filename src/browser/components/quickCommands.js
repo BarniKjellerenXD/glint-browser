@@ -8,9 +8,23 @@
  * pages, browser commands, and delegates to DuckDuckGo as a web fallback.
  * ========================================================================== */
 
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-var { PlacesUtils } = ChromeUtils.import("resource://gre/modules/PlacesUtils.jsm");
-var { PrivateBrowsingUtils } = ChromeUtils.import("resource://gre/modules/PrivateBrowsingUtils.jsm");
+// Firefox 152+ importESModule with .jsm fallback
+let Services, PlacesUtils, PrivateBrowsingUtils;
+try {
+  ({ Services } = ChromeUtils.importESModule("resource://gre/modules/Services.sys.mjs"));
+} catch (e) {
+  ({ Services } = ChromeUtils.import("resource://gre/modules/Services.jsm"));
+}
+try {
+  ({ PlacesUtils } = ChromeUtils.importESModule("resource://gre/modules/PlacesUtils.sys.mjs"));
+} catch (e) {
+  ({ PlacesUtils } = ChromeUtils.import("resource://gre/modules/PlacesUtils.jsm"));
+}
+try {
+  ({ PrivateBrowsingUtils } = ChromeUtils.importESModule("resource://gre/modules/PrivateBrowsingUtils.sys.mjs"));
+} catch (e) {
+  ({ PrivateBrowsingUtils } = ChromeUtils.import("resource://gre/modules/PrivateBrowsingUtils.jsm"));
+}
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -28,12 +42,12 @@ const SECTION_LABELS = {
 };
 
 const ICONS = {
-  tab:       "chrome://browser/skin/tab.svg",
-  bookmark:  "chrome://browser/skin/bookmark.svg",
-  history:   "chrome://browser/skin/history.svg",
-  command:   "chrome://browser/skin/command.svg",
-  settings:  "chrome://browser/skin/settings.svg",
-  web:       "chrome://global/skin/icons/search-glass.svg",
+  tab:       "\u{1F4C4}",
+  bookmark:  "\u2B50",
+  history:   "\u{1F550}",
+  command:   "\u26A1",
+  settings:  "\u2699\uFE0F",
+  web:       "\u{1F50D}",
 };
 
 // ---------------------------------------------------------------------------
@@ -147,7 +161,7 @@ class HistorySearchProvider {
         results.push({
           title,
           subtitle: url,
-          icon: "chrome://browser/skin/history.svg",
+          icon: ICONS.history,
           action: "openURL",
           actionData: { url },
           section: "history",
@@ -487,7 +501,7 @@ var QuickCommands = {
         row.dataset.index = globalIndex;
 
         row.innerHTML = `
-          <span class="item-icon" style="background-image: url('${this._escapeAttr(item.icon || ICONS.command)}')"></span>
+          <span class="item-icon">${this._escapeHtml(item.icon || ICONS.command)}</span>
           <span class="item-content">
             <span class="item-title">${this._escapeHtml(this._highlight(item.title))}</span>
             <span class="item-subtitle">${item.subtitle ? this._escapeHtml(item.subtitle) : ""}</span>

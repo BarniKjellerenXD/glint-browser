@@ -4,7 +4,7 @@
   "private": true,
   "description": "Glint Browser — a privacy-focused, glassmorphic Gecko browser",
   "scripts": {
-    "init": "npm run download && npm run import",
+    "init": "npm run download && npm run import && npm run bootstrap",
     "download": "surfer download",
     "import": "surfer import",
     "bootstrap": "surfer bootstrap",

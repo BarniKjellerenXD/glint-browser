@@ -12,15 +12,13 @@
 
   <script src="chrome://browser/content/quickCommands.js"/>
 
-  <!-- Keyboard shortcut registration -->
-  <commandset id="mainCommandSet">
-    <command id="cmd_quickCommands"
-             oncommand="QuickCommands.init(); QuickCommands.toggle();"/>
+  <!-- Keyboard shortcut registration — Ctrl+E -->
+  <keyset id="glintKeyset">
     <key id="key_quickCommands"
          key="E"
          modifiers="accel"
-         command="cmd_quickCommands"/>
-  </commandset>
+         oncommand="QuickCommands.toggle();"/>
+  </keyset>
 
   <!-- The spotlight overlay panel -->
   <panel id="quickCommandsPanel"
@@ -44,9 +42,6 @@
                      spellcheck="false"
                      placeholder="Type a command or search…"
                      aria-label="Quick commands search"/>
-        <html:div id="quickCommandsClearBtn" hidden="true">
-          <html:span>&times;</html:span>
-        </html:div>
       </html:div>
 
       <!-- Results list -->
@@ -78,10 +73,6 @@
         <html:div class="footer-hint-group">
           <html:kbd class="hint-key">Esc</html:kbd>
           <html:span class="hint-label">Close</html:span>
-        </html:div>
-        <html:div class="footer-hint-group footer-hint-secondary">
-          <html:kbd class="hint-key">Tab</html:kbd>
-          <html:span class="hint-label">Search Web</html:span>
         </html:div>
       </html:div>
     </html:div>
