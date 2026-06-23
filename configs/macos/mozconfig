@@ -1,8 +1,4 @@
-# Windows build config for Glint Browser
-ac_add_options --target=x86_64-pc-mingw32
-ac_add_options --enable-js-shell
-ac_add_options --enable-rust-simd
-
+# macOS build config for Glint Browser
 # Remove Mozilla services
 ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
@@ -13,6 +9,6 @@ ac_add_options --disable-pocket
 ac_add_options --enable-optimize
 ac_add_options --disable-debug
 
-# Telemetry and data reporting — fully disabled
+# Telemetry
 mk_add_options MOZ_TELEMETRY_REPORTING=
 mk_add_options MOZ_DATA_REPORTING=
