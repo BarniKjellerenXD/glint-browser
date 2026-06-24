@@ -4,7 +4,7 @@ diff --git a/browser/base/jar.mn b/browser/base/jar.mn
 @@ -137,4 +137,8 @@
  *       content/browser/default-bookmarks.html        (content/default-bookmarks.html)
  
-+# Glint Browser — content files
++# Glint Browser - content files
 +        content/browser/glint-quick-commands.js        (content/glint-quick-commands.js)
 +        content/browser/glint-quick-commands.css       (content/glint-quick-commands.css)
 +

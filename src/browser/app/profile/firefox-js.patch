@@ -1,12 +1,12 @@
 diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
 --- a/browser/app/profile/firefox.js
 +++ b/browser/app/profile/firefox.js
-@@ -3621,2 +3621,34 @@
+@@ -3624,2 +3624,34 @@
  // When enabled, Firefox ignores the distribution.ini file if global.id is MozillaOnline.
  pref("distribution.mozillaonline.ignore", true);
 +
 +// ============================================================
-+// Glint Browser — Custom Default Preferences
++// Glint Browser - Custom Default Preferences
 +// ============================================================
 +
 +// --- Privacy Hardening ---
