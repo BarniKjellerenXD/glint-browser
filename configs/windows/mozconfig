@@ -1,5 +1,8 @@
 # Windows build config for Glint Browser
-ac_add_options --target=x86_64-pc-mingw32
+# Firefox dropped mingw32 support — use MSVC target
+# Surfer/mach detect the native target automatically, so
+# no explicit --target needed. Remove the obsolete flag.
+
 ac_add_options --enable-js-shell
 ac_add_options --enable-rust-simd
 
