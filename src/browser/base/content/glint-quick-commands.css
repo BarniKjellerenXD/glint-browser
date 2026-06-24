@@ -1,0 +1,214 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* Glint Quick Commands — Spotlight Search Styles */
+
+/* ── Overlay ── */
+
+.glint-spotlight-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 2147483647;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12vh;
+}
+
+/* ── Panel ── */
+
+.glint-spotlight-panel {
+  width: 640px;
+  max-width: 90vw;
+  max-height: 70vh;
+  background: rgba(20, 20, 30, 0.85);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -moz-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: glint-spotlight-enter 0.2s ease-out;
+}
+
+@keyframes glint-spotlight-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Header / Input ── */
+
+.glint-spotlight-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glint-spotlight-icon {
+  width: 20px;
+  height: 20px;
+  color: rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+}
+
+.glint-spotlight-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.4;
+}
+
+.glint-spotlight-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Results ── */
+
+.glint-spotlight-results {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.glint-spotlight-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.glint-spotlight-results::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.glint-spotlight-results::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+
+/* ── Sections ── */
+
+.glint-spotlight-section:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+.glint-spotlight-section-title {
+  padding: 6px 20px 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Command Items ── */
+
+.glint-spotlight-command {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background 0.1s;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.glint-spotlight-command:hover,
+.glint-spotlight-command.selected {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.glint-spotlight-command:active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.glint-spotlight-command-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.glint-spotlight-command-label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+}
+
+.glint-spotlight-command-url {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  direction: rtl;
+  text-align: right;
+}
+
+.glint-spotlight-command-shortcut {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  padding: 2px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+/* ── Footer ── */
+
+.glint-spotlight-footer {
+  padding: 8px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glint-spotlight-footer-hint {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.glint-spotlight-footer-hint kbd {
+  display: inline-block;
+  padding: 1px 4px;
+  margin: 0 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+  font-size: 10px;
+  font-family: inherit;
+}
+
+/* ── Dark scrollbar in XUL ── */
+
+#glint-spotlight-results {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}

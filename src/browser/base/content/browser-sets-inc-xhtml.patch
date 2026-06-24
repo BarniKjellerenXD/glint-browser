@@ -1,0 +1,9 @@
+diff --git a/browser/base/content/browser-sets.inc.xhtml b/browser/base/content/browser-sets.inc.xhtml
+--- a/browser/base/content/browser-sets.inc.xhtml
++++ b/browser/base/content/browser-sets.inc.xhtml
+@@ -477,4 +477,6 @@
+          internal="true"/>
+ #endif
+   </keyset>
++
++#include glint-keysets.inc.xhtml

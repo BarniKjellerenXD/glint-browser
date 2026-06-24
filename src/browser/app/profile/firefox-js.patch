@@ -1,0 +1,38 @@
+diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
+--- a/browser/app/profile/firefox.js
++++ b/browser/app/profile/firefox.js
+@@ -3621,2 +3621,34 @@
+ // When enabled, Firefox ignores the distribution.ini file if global.id is MozillaOnline.
+ pref("distribution.mozillaonline.ignore", true);
++
++// ============================================================
++// Glint Browser — Custom Default Preferences
++// ============================================================
++
++// --- Privacy Hardening ---
++pref("browser.trackingprotection.enabled", true);
++pref("browser.trackingprotection.pbmode.enabled", true);
++pref("browser.trackingprotection.fingerprinting.enabled", true);
++pref("browser.trackingprotection.cryptomining.enabled", true);
++pref("privacy.trackingprotection.socialtrack.enabled", true);
++pref("privacy.trackingprotection.emailtracking.enabled", true);
++pref("network.cookie.cookieBehavior", 4);
++pref("privacy.partition.network_state.ocsp_cache", true);
++pref("privacy.resistFingerprinting", true);
++pref("privacy.resistFingerprinting.letterboxing", true);
++pref("media.peerconnection.enabled", false);
++pref("dom.security.https_only_mode", true);
++pref("dom.security.https_only_mode_pbm", true);
++pref("network.dns.disablePrefetch", true);
++pref("network.prefetch-next", false);
++pref("network.dns.echconfig.enabled", true);
++pref("network.dns.http3_echconfig.enabled", true);
++pref("network.trr.mode", 3);
++pref("network.trr.uri", "https://dns.quad9.net/dns-query");
++pref("network.trr.custom_uri", "https://dns.quad9.net/dns-query");
++
++// --- Glint UI Preferences ---
++pref("glint.quickcommands.enabled", true);
++pref("glint.glass.effect", "frosted");
++pref("glint.glass.blur", 12);
++pref("glint.glass.opacity", 0.85);

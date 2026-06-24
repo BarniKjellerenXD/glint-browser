@@ -1,0 +1,322 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/**
+ * Glint Liquid Glass Theme
+ *
+ * A frosted-glass UI for the browser chrome.
+ * Apply backdrop-filter: blur() to all chrome panels, toolbars, and popups.
+ * The wallpaper engine provides the background that shines through.
+ *
+ * Design tokens:
+ *   --glint-glass-bg:        rgba(18, 18, 28, 0.78)
+ *   --glint-glass-border:    rgba(255, 255, 255, 0.08)
+ *   --glint-glass-blur:      16px
+ *   --glint-accent:          #5b7cf9 (soft blue)
+ *   --glint-text:            rgba(255, 255, 255, 0.87)
+ *   --glint-text-secondary:  rgba(255, 255, 255, 0.50)
+ */
+
+/* ═══════════════════════════════════════════════════════════════
+   1. DESIGN TOKENS
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --glint-glass-bg: rgba(16, 16, 26, 0.75);
+  --glint-glass-bg-hover: rgba(255, 255, 255, 0.06);
+  --glint-glass-bg-active: rgba(255, 255, 255, 0.10);
+  --glint-glass-border: rgba(255, 255, 255, 0.08);
+  --glint-glass-border-strong: rgba(255, 255, 255, 0.14);
+  --glint-glass-blur: 16px;
+  --glint-accent: #5b7cf9;
+  --glint-accent-soft: rgba(91, 124, 249, 0.20);
+  --glint-accent-glow: rgba(91, 124, 249, 0.30);
+  --glint-text: rgba(255, 255, 255, 0.87);
+  --glint-text-secondary: rgba(255, 255, 255, 0.50);
+  --glint-text-muted: rgba(255, 255, 255, 0.30);
+  --glint-surface: rgba(255, 255, 255, 0.04);
+  --glint-surface-hover: rgba(255, 255, 255, 0.08);
+  --glint-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --glint-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --glint-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --glint-border-radius-sm: 4px;
+  --glint-border-radius-md: 8px;
+  --glint-border-radius-lg: 12px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   2. MAIN WINDOW BACKGROUND
+   ═══════════════════════════════════════════════════════════════ */
+
+#main-window {
+  background: #0a0a12 !important;
+}
+
+#browser {
+  background: transparent !important;
+}
+
+#tabbrowser-tabbox {
+  background: transparent !important;
+}
+
+#tabbrowser-tabpanels {
+  background: transparent !important;
+}
+
+#appcontent {
+  background: transparent !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   3. TOOLBOX & TOOLBARS — FROSTED GLASS
+   ═══════════════════════════════════════════════════════════════ */
+
+#navigator-toolbox {
+  background: var(--glint-glass-bg) !important;
+  backdrop-filter: blur(var(--glint-glass-blur)) saturate(1.3) !important;
+  -moz-backdrop-filter: blur(var(--glint-glass-blur)) saturate(1.3) !important;
+  border-bottom: 1px solid var(--glint-glass-border) !important;
+}
+
+toolbar {
+  background: transparent !important;
+  border: none !important;
+  padding: 2px 4px !important;
+}
+
+#toolbar-menubar {
+  background: transparent !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  min-height: 28px !important;
+}
+
+#TabsToolbar {
+  background: transparent !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  min-height: 36px !important;
+}
+
+#nav-bar {
+  background: transparent !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  border-top: 1px solid var(--glint-glass-border) !important;
+  padding: 4px 8px !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   4. URL BAR
+   ═══════════════════════════════════════════════════════════════ */
+
+#urlbar,
+#urlbar-background {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid var(--glint-glass-border) !important;
+  border-radius: var(--glint-border-radius-md) !important;
+  box-shadow: var(--glint-shadow-sm) !important;
+  transition: border-color 0.15s, box-shadow 0.15s !important;
+}
+
+#urlbar:is([focused="true"], [open]) {
+  border-color: var(--glint-accent) !important;
+  box-shadow: 0 0 0 2px var(--glint-accent-soft), var(--glint-shadow-md) !important;
+}
+
+#urlbar[focused="true"] > #urlbar-background,
+#urlbar[open] > #urlbar-background {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.urlbarView {
+  background: var(--glint-glass-bg) !important;
+  backdrop-filter: blur(24px) saturate(1.4) !important;
+  -moz-backdrop-filter: blur(24px) saturate(1.4) !important;
+  border: 1px solid var(--glint-glass-border-strong) !important;
+  border-radius: 0 0 var(--glint-border-radius-md) var(--glint-border-radius-md) !important;
+  box-shadow: var(--glint-shadow-lg) !important;
+}
+
+.urlbarView-row:hover {
+  background: var(--glint-glass-bg-hover) !important;
+}
+
+.urlbarView-row[selected] {
+  background: var(--glint-accent-soft) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   5. TABS
+   ═══════════════════════════════════════════════════════════════ */
+
+.tabbrowser-tab {
+  background: transparent !important;
+  border: none !important;
+  border-radius: var(--glint-border-radius-sm) !important;
+  color: var(--glint-text) !important;
+  font-size: 12px !important;
+  transition: background 0.15s !important;
+}
+
+.tabbrowser-tab:hover {
+  background: var(--glint-glass-bg-hover) !important;
+}
+
+.tabbrowser-tab[selected] {
+  background: var(--glint-accent-soft) !important;
+  box-shadow: inset 0 -2px 0 var(--glint-accent) !important;
+}
+
+.tabbrowser-tab:is([selected], :hover) .tab-label {
+  color: var(--glint-text) !important;
+}
+
+.tab-label {
+  color: var(--glint-text-secondary) !important;
+}
+
+.tab-close-button {
+  border-radius: var(--glint-border-radius-sm) !important;
+  padding: 2px !important;
+}
+
+.tab-close-button:hover {
+  background: rgba(255, 80, 80, 0.2) !important;
+}
+
+/* New tab button */
+#tabs-newtab-button,
+#new-tab-button {
+  border: none !important;
+  border-radius: var(--glint-border-radius-sm) !important;
+  padding: 4px 8px !important;
+  background: transparent !important;
+  transition: background 0.15s !important;
+}
+
+#tabs-newtab-button:hover,
+#new-tab-button:hover {
+  background: var(--glint-glass-bg-hover) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   6. SIDEBAR
+   ═══════════════════════════════════════════════════════════════ */
+
+#sidebar-main {
+  background: var(--glint-glass-bg) !important;
+  backdrop-filter: blur(var(--glint-glass-blur)) saturate(1.3) !important;
+  -moz-backdrop-filter: blur(var(--glint-glass-blur)) saturate(1.3) !important;
+  border-right: 1px solid var(--glint-glass-border) !important;
+}
+
+#sidebar-box,
+#sidebar {
+  background: transparent !important;
+}
+
+#sidebar-splitter {
+  background: var(--glint-glass-border) !important;
+  width: 1px !important;
+  border: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   7. PANELS & POPUPS
+   ═══════════════════════════════════════════════════════════════ */
+
+panel,
+menupanel,
+.popup-notification-panel {
+  --panel-background: var(--glint-glass-bg) !important;
+  --panel-border-color: var(--glint-glass-border-strong) !important;
+  background: var(--glint-glass-bg) !important;
+  backdrop-filter: blur(24px) saturate(1.4) !important;
+  -moz-backdrop-filter: blur(24px) saturate(1.4) !important;
+  border: 1px solid var(--glint-glass-border-strong) !important;
+  border-radius: var(--glint-border-radius-md) !important;
+  box-shadow: var(--glint-shadow-lg) !important;
+}
+
+panel[type="autocomplete-richlistbox"],
+#PopupAutoComplete {
+  background: var(--glint-glass-bg) !important;
+  backdrop-filter: blur(24px) saturate(1.4) !important;
+  -moz-backdrop-filter: blur(24px) saturate(1.4) !important;
+  border: 1px solid var(--glint-glass-border-strong) !important;
+  border-radius: var(--glint-border-radius-md) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   8. BUTTONS & TOOLBAR ITEMS
+   ═══════════════════════════════════════════════════════════════ */
+
+.toolbarbutton-1,
+toolbarbutton:not([disabled="true"]) {
+  fill: var(--glint-text) !important;
+  color: var(--glint-text) !important;
+  border-radius: var(--glint-border-radius-sm) !important;
+  transition: background 0.15s !important;
+}
+
+.toolbarbutton-1:not([disabled="true"]):hover,
+toolbarbutton:not([disabled="true"]):hover {
+  background: var(--glint-glass-bg-hover) !important;
+}
+
+.toolbarbutton-1:not([disabled="true"]):is([open], [checked]) {
+  background: var(--glint-accent-soft) !important;
+}
+
+/* Back/Forward buttons */
+#back-button,
+#forward-button {
+  border: none !important;
+  border-radius: var(--glint-border-radius-sm) !important;
+  padding: 4px !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   9. FIND BAR
+   ═══════════════════════════════════════════════════════════════ */
+
+#findbar {
+  background: var(--glint-glass-bg) !important;
+  backdrop-filter: blur(var(--glint-glass-blur)) saturate(1.3) !important;
+  -moz-backdrop-filter: blur(var(--glint-glass-blur)) saturate(1.3) !important;
+  border-top: 1px solid var(--glint-glass-border) !important;
+  padding: 4px 8px !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   10. STATUS PANEL & DOWNLOADS
+   ═══════════════════════════════════════════════════════════════ */
+
+#statuspanel {
+  background: var(--glint-glass-bg) !important;
+  backdrop-filter: blur(var(--glint-glass-blur)) saturate(1.3) !important;
+  -moz-backdrop-filter: blur(var(--glint-glass-blur)) saturate(1.3) !important;
+  border: 1px solid var(--glint-glass-border) !important;
+  border-radius: var(--glint-border-radius-sm) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   11. SELECTION HIGHLIGHT
+   ═══════════════════════════════════════════════════════════════ */
+
+::selection {
+  background: var(--glint-accent-soft) !important;
+  color: var(--glint-text) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   12. SCROLLBARS (chrome only)
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
