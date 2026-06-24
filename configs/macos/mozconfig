@@ -2,8 +2,6 @@
 # Remove Mozilla services
 ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
-ac_add_options --disable-parental-controls
-ac_add_options --disable-pocket
 
 # Performance
 ac_add_options --enable-optimize
